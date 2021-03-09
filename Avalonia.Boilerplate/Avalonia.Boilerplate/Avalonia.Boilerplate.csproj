@@ -6,10 +6,14 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="App.xaml" />
+    <None Remove="DialogWindow.xaml" />
     <None Remove="MainWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaXaml Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AvaloniaXaml>
+    <AvaloniaXaml Include="DialogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaXaml>
     <AvaloniaXaml Include="MainWindow.xaml">
@@ -17,13 +21,16 @@
     </AvaloniaXaml>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0013131-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0013131-beta" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0013131-beta" />
    </ItemGroup>
   <ItemGroup>
     <Compile Update="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="DialogWindow.xaml.cs">
+      <DependentUpon>DialogWindow.xaml</DependentUpon>
     </Compile>
     <Compile Update="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
