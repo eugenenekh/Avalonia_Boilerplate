@@ -13,6 +13,7 @@ namespace Avalonia.Boilerplate {
 
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
+            WindowState = WindowState.Maximized;
         }
     }
 }

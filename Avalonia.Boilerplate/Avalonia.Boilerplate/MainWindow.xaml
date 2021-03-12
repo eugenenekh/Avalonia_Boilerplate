@@ -5,5 +5,35 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia.Boilerplate.MainWindow"
         Title="Avalonia.Boilerplate">
-    Welcome to Avalonia!
+
+    <TreeView>
+        <TreeViewItem Header="right-click me">
+            <TreeViewItem.ContextMenu>
+                <ContextMenu Name="contextMenu">
+                    <MenuItem Header="ABC">
+                        <MenuItem.Items>
+                            <MenuItem Header="ABC"/>
+                            <MenuItem Header="EFG">
+                                <MenuItem.Items>
+                                    <MenuItem Header="ABC"/>
+                                    <MenuItem Header="EFG"/>
+                                    <MenuItem Header="HIJ"/>
+                                </MenuItem.Items>
+                            </MenuItem>
+                            <MenuItem Header="HIJ"/>
+                        </MenuItem.Items>
+                    </MenuItem>
+                    <MenuItem Header="EFG"/>
+                    <MenuItem Header="HIJ">
+                        <MenuItem.Items>
+                            <MenuItem Header="ABC"/>
+                            <MenuItem Header="EFG"/>
+                            <MenuItem Header="HIJ"/>
+                        </MenuItem.Items>
+                    </MenuItem>
+                    <MenuItem Header="KLM"/>
+                </ContextMenu>
+            </TreeViewItem.ContextMenu>
+        </TreeViewItem>
+    </TreeView>
 </Window>
