@@ -4,6 +4,32 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia.Boilerplate.MainWindow"
-        Title="Avalonia.Boilerplate">
-    Welcome to Avalonia!
+        Title="Avalonia.Boilerplate"
+		ExtendClientAreaChromeHints="PreferSystemChrome"
+        ExtendClientAreaToDecorationsHint="True"
+		Padding="1">
+	<NativeMenu.Menu>
+		<NativeMenu>
+			<NativeMenuItem Header="File">
+				<NativeMenuItem.Menu>
+					<NativeMenu>
+						<NativeMenuItem Header="Open Dialog" Clicked="OnOpenDialogNativeMenuItemClick" />
+					</NativeMenu>
+				</NativeMenuItem.Menu>
+			</NativeMenuItem>
+		</NativeMenu>
+	</NativeMenu.Menu>
+
+	<DockPanel>
+		<Menu Name="mainMenu" DockPanel.Dock="Top">
+			<MenuItem Header="_File">
+				<MenuItem Header="_Open Dialog" Click="OnOpenDialogMenuItemClick" />
+			</MenuItem>
+		</Menu>
+
+		<TabControl Name="tabControl">
+			<Label>Welcome to Avalonia!</Label>
+		</TabControl>
+	</DockPanel>
+	
 </Window>

@@ -1,5 +1,7 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
 namespace Avalonia.Boilerplate {
@@ -13,6 +15,15 @@ namespace Avalonia.Boilerplate {
 
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
+            ExtendClientAreaTitleBarHeightHint = WindowDecorationMargin.Top;
+        }
+
+        private void OnOpenDialogNativeMenuItemClick(object sender, EventArgs e) {
+            new DialogWindow().ShowModalWindow(this);
+        }
+
+        private void OnOpenDialogMenuItemClick(object sender, RoutedEventArgs e) {
+            new DialogWindow().ShowModalWindow(this);
         }
     }
 }
