@@ -23,7 +23,9 @@ namespace Avalonia.Boilerplate {
         }
 
         private void OnOpenDialogMenuItemClick(object sender, RoutedEventArgs e) {
-            new DialogWindow().ShowModalWindow(this);
+            var dialog = new DialogWindow() { Width = 200, Height = 200 };
+            dialog.ShowModalWindow(this);
+            Console.WriteLine($"Dialog Width: {dialog.Width}, Dialog Height: {dialog.Height}");
         }
     }
 }
