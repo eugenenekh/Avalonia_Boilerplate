@@ -8,7 +8,8 @@ using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
 
 namespace Avalonia.Boilerplate {
-    public class MainWindow : Window {
+    public class MainWindow : BaseWindow
+    {
         public MainWindow() {
             InitializeComponent();
 #if DEBUG
@@ -16,22 +17,24 @@ namespace Avalonia.Boilerplate {
 #endif
         }
 
-        protected override void OnClosing(CancelEventArgs e) {
-            var windows = ((IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).Windows;
-            e.Cancel |= windows.Any(w => w is DialogWindow);
-            base.OnClosing(e);
-        }
-
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
         }
 
-        private void OnOpenDialogNativeMenuItemClick(object sender, EventArgs e) {
-            new DialogWindow().ShowModalWindow(this);
+        private void OnOpenDialogNativeMenuItemClick(object sender, EventArgs e)
+        {
+            ShowDialog();
         }
 
-        private void OnOpenDialogMenuItemClick(object sender, RoutedEventArgs e) {
-            new DialogWindow().ShowModalWindow(this);
+        private void OnOpenDialogMenuItemClick(object sender, RoutedEventArgs e)
+        {
+            ShowDialog();
+        }
+
+        private void ShowDialog()
+        {
+            var dialog = new DialogWindow();
+            dialog.ShowAsModal(this);
         }
     }
 }

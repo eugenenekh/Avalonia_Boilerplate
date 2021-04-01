@@ -1,8 +1,9 @@
-<Window xmlns="https://github.com/avaloniaui"
+<local:BaseWindow xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Avalonia.Boilerplate"
         x:Class="Avalonia.Boilerplate.DialogWindow"
         Title="DialogWindow">
   Welcome to Avalonia!
-</Window>
+</local:BaseWindow>
