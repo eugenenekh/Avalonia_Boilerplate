@@ -5,5 +5,8 @@
         xmlns:local="clr-namespace:Avalonia.Boilerplate"
         x:Class="Avalonia.Boilerplate.DialogWindow"
         Title="DialogWindow">
-  Welcome to Avalonia!
+    <StackPanel>
+        <CheckBox Name="canClose">Can close</CheckBox>
+        <Button Click="Button_OnClick">Open child dialog</Button>
+    </StackPanel>
 </local:BaseWindow>
