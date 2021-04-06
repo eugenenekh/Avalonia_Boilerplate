@@ -85,8 +85,8 @@ namespace Avalonia.Boilerplate
         {
             if (closingHandler != null)
             {
-                // already closing
-                return base.HandleClosing();
+                // already closing, bail-out
+                return true;
             }
 
             var result = false;
