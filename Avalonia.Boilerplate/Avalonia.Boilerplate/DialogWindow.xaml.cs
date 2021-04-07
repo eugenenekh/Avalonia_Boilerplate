@@ -7,7 +7,11 @@ using Avalonia.Markup.Xaml;
 using Avalonia.Threading;
 
 namespace Avalonia.Boilerplate {
-    public class DialogWindow : BaseWindow {
+    public class DialogWindow : BaseWindow
+    {
+
+        private static int i;
+        
         public DialogWindow() {
             InitializeComponent();
         }
@@ -16,6 +20,7 @@ namespace Avalonia.Boilerplate {
             AvaloniaXamlLoader.Load(this);
             Width = 300;
             Height = 300;
+            Title = "Dialog " + ++i;
         }
 
         protected override async Task<bool> CanClose()

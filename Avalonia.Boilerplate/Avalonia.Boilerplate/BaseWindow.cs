@@ -9,55 +9,79 @@ namespace Avalonia.Boilerplate
 {
     public class BaseWindow : Window
     {
+        private class RootClosingHandler : ClosingHandler
+        {
+            private readonly Dictionary<Window, ClosingHandler> closingHandlerByWindow = new Dictionary<Window, ClosingHandler>();
+
+            public RootClosingHandler(Window owner, Func<Task<bool>> canClose) : base(owner, canClose)
+            {
+                AddClosingHandler(this);
+            }
+
+            public ClosingHandler GetClosingHandler(Window target)
+            {
+                closingHandlerByWindow.TryGetValue(target, out var closingHandler);
+                return closingHandler;
+            }
+            
+            public void AddClosingHandler(ClosingHandler closingHandler)
+            {
+                closingHandlerByWindow.Add(closingHandler.Target, closingHandler);
+            }
+            
+            public static RootClosingHandler GetRootClosingHandler(Window window)
+            {
+                while (window.Owner is Window owner)
+                {
+                    window = owner;    
+                }
+
+                if (window is BaseWindow baseWindow)
+                {
+                    return baseWindow.closingHandler;
+                }
+
+                return null;
+            }
+        }
+        
+
         private class ClosingHandler
         {
-            private readonly List<(BaseWindow, Func<Task<bool>>)> children = new List<(BaseWindow, Func<Task<bool>>)>();
+            private readonly List<ClosingHandler> children = new List<ClosingHandler>();
+            private readonly Func<Task<bool>> canClose;
+            
+            public ClosingHandler(Window target, Func<Task<bool>> canClose)
+            {
+                Target = target;
+                this.canClose = canClose ?? (() => Task.FromResult(true));
+            }
 
-            public ClosingHandler(BaseWindow owner, Func<Task<bool>> closingHandler)
-            {
-                AddClosingChild(owner, closingHandler);
-            }
-            
-            public static ClosingHandler GetClosingHandler(BaseWindow window)
-            {
-                if (window == null)
-                {
-                    return null;
-                }
-                
-                return window.closingHandler ?? GetClosingHandler(window.Owner as BaseWindow);
-            }
-            
+            public Window Target { get; }
             public bool IsClosing { get; private set; }
 
-            public void AddClosingChild(BaseWindow window, Func<Task<bool>> closingHandler)
+            public void AddClosingChild(ClosingHandler handler)
             {
                 if (!IsClosing)
                 {
-                    children.Add((window, closingHandler));
+                    children.Add(handler);
                 }
             }
 
-            public async Task Close()
+            public async Task<bool> Close()
             {
                 if (IsClosing)
                 {
-                    return;
+                    return false;
                 }
 
                 IsClosing = true;
                 try
                 {
                     var allChildrenClosed = true;
-                    // take children first
-                    var sortedChildrenToClose = children.Skip(1);
-                    foreach (var (child, closingHandler) in sortedChildrenToClose)
+                    foreach (var closingHandler in children)
                     {
-                        if (await closingHandler())
-                        {
-                            child.Close();
-                        }
-                        else
+                        if (!await closingHandler.Close())
                         {
                             allChildrenClosed = false;
                         }
@@ -65,12 +89,14 @@ namespace Avalonia.Boilerplate
 
                     if (allChildrenClosed)
                     {
-                        var (self, closingHandler) = children.First();
-                        if (await closingHandler())
+                        if (await canClose())
                         {
-                            self.Close();
+                            Target.Close();
+                            return true;
                         }
                     }
+
+                    return false;
                 }
                 finally
                 {
@@ -79,8 +105,8 @@ namespace Avalonia.Boilerplate
             }
         }
         
-        private ClosingHandler closingHandler;
-
+        private RootClosingHandler closingHandler;
+        
         protected override bool HandleClosing()
         {
             if (closingHandler != null)
@@ -90,7 +116,7 @@ namespace Avalonia.Boilerplate
             }
 
             var result = false;
-            closingHandler = new ClosingHandler(this, CanClose);
+            closingHandler = new RootClosingHandler(this, CanClose);
             try
             {
                 result = base.HandleClosing();
@@ -110,7 +136,29 @@ namespace Avalonia.Boilerplate
             if (closingHandler == null)
             {
                 // closing self and not a parent closing a child
-                ClosingHandler.GetClosingHandler(this)?.AddClosingChild(this, CanClose);
+                var rootClosingHandler = RootClosingHandler.GetRootClosingHandler(this);
+                if (rootClosingHandler.IsClosing)
+                {
+                    return;
+                }
+                
+                var closingHandler = rootClosingHandler.GetClosingHandler(this);
+                if (closingHandler == null)
+                {
+                    closingHandler = new ClosingHandler(this, CanClose);
+                    rootClosingHandler.AddClosingHandler(closingHandler);
+                }
+
+                var owner = Owner as Window;
+                var parentClosingHandler = rootClosingHandler.GetClosingHandler(owner);
+                if (parentClosingHandler == null)
+                {
+                    Func<Task<bool>> closingHandlerFunc = Owner is BaseWindow ownerBaseWindow ? ownerBaseWindow.CanClose : null;
+                    parentClosingHandler = new ClosingHandler(owner, closingHandlerFunc);
+                    rootClosingHandler.AddClosingHandler(parentClosingHandler);
+                }
+
+                parentClosingHandler.AddClosingChild(closingHandler);
             }
             else
             {
