@@ -37,16 +37,5 @@ namespace Avalonia.Boilerplate {
             var dialog = new DialogWindow();
             dialog.Show(this);
         }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-        }
-
-        protected override async Task<bool> CanClose()
-        {
-            await base.CanClose();
-            return true;
-        }
     }
 }

@@ -23,10 +23,9 @@ namespace Avalonia.Boilerplate {
             Title = "Dialog " + ++i;
         }
 
-        protected override async Task<bool> CanClose()
+        public override bool CanClose()
         {
-            await base.CanClose();
-            return await Dispatcher.UIThread.InvokeAsync(() => this.FindControl<CheckBox>("canClose").IsChecked) ?? false;
+            return this.FindControl<CheckBox>("canClose").IsChecked == true && base.CanClose();
         }
 
         private void Button_OnClick(object? sender, RoutedEventArgs e)
