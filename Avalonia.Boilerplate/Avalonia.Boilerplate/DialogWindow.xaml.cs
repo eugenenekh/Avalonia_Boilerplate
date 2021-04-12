@@ -1,6 +1,8 @@
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 
 namespace Avalonia.Boilerplate {
     public class DialogWindow : BaseWindow
@@ -19,9 +21,10 @@ namespace Avalonia.Boilerplate {
             Title = "Dialog " + ++i;
         }
 
-        public override bool CanClose()
+        public override async Task<bool> CanClose()
         {
-            return this.FindControl<CheckBox>("canClose").IsChecked == true && base.CanClose();
+            var baseClose = await base.CanClose();
+            return baseClose && this.FindControl<CheckBox>("canClose").IsChecked == true;
         }
 
         private void Button_OnClick(object? sender, RoutedEventArgs e)

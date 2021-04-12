@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 
@@ -8,18 +9,28 @@ namespace Avalonia.Boilerplate
     {
         protected override bool HandleClosing()
         {
-            if (CanClose())
+            var task = CanClose();
+            task.Wait();
+            if (task.Result)
             {
                 return base.HandleClosing();
             }
             return true;
         }
 
-        public virtual bool CanClose()
+        public virtual async Task<bool> CanClose()
         {
             var windows = ((IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).Windows;
             var childrenWindows = windows.Where(x => x.Owner == this).ToList();
-            return childrenWindows.Count == 0 || !childrenWindows.Any(x => !((BaseWindow)x).CanClose());
+            var canBeClosed = true;
+            foreach(var child in childrenWindows)
+            {
+                if (!await ((BaseWindow)child).CanClose())
+                {
+                    canBeClosed = false;
+                }
+            }
+            return childrenWindows.Count == 0 || canBeClosed;
         }
     }
 }
