@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 
@@ -23,7 +19,7 @@ namespace Avalonia.Boilerplate
         {
             var windows = ((IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).Windows;
             var childrenWindows = windows.Where(x => x.Owner == this).ToList();
-            return childrenWindows.Count() == 0 || !childrenWindows.Any(x => !((BaseWindow)x).CanClose());
+            return childrenWindows.Count == 0 || !childrenWindows.Any(x => !((BaseWindow)x).CanClose());
         }
     }
 }

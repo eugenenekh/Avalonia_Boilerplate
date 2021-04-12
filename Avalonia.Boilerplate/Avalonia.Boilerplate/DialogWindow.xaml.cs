@@ -1,10 +1,6 @@
-using System.ComponentModel;
-using System.Threading.Tasks;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
-using Avalonia.Threading;
 
 namespace Avalonia.Boilerplate {
     public class DialogWindow : BaseWindow
