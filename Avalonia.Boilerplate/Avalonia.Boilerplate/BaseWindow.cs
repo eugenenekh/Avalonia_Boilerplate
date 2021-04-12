@@ -31,14 +31,13 @@ namespace Avalonia.Boilerplate
             
             public static RootClosingHandler GetRootClosingHandler(Window window)
             {
-                while (window.Owner is Window owner)
+                while (window is BaseWindow baseWindow)
                 {
-                    window = owner;    
-                }
-
-                if (window is BaseWindow baseWindow)
-                {
-                    return baseWindow.closingHandler;
+                    if (baseWindow.closingHandler != null)
+                    {
+                        return baseWindow.closingHandler;
+                    }
+                    window = window.Owner as Window;    
                 }
 
                 return null;
