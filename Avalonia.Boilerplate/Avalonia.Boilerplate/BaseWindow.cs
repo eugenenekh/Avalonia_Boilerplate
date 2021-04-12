@@ -12,14 +12,18 @@ namespace Avalonia.Boilerplate
     {
         protected override bool HandleClosing()
         {
-            return !CanClose();
+            if (CanClose())
+            {
+                return base.HandleClosing();
+            }
+            return true;
         }
 
         public virtual bool CanClose()
         {
             var windows = ((IClassicDesktopStyleApplicationLifetime)Application.Current.ApplicationLifetime).Windows;
             var childrenWindows = windows.Where(x => x.Owner == this).ToList();
-            return childrenWindows.Count() == 0;
+            return childrenWindows.Count() == 0 || !childrenWindows.Any(x => !((BaseWindow)x).CanClose());
         }
     }
 }
