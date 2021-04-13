@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -11,6 +12,15 @@ namespace Avalonia.Boilerplate {
 #if DEBUG
             this.AttachDevTools();
 #endif
+            
+            popup = new Window();
+            popup.Focusable = false;
+            popup.ShowActivated = false;
+            popup.Width = 100;
+            popup.Height = 100;
+            popup.Position = new PixelPoint(500, 200);
+            popup.Show();
+            popup.Hide();
         }
 
         private void InitializeComponent() {
@@ -21,15 +31,6 @@ namespace Avalonia.Boilerplate {
         
         private void InputElement_OnPointerEnter(object? sender, PointerEventArgs e)
         {
-            if (popup == null)
-            {
-                popup = new Window();
-                popup.ShowActivated = false;
-                popup.Width = 100;
-                popup.Height = 100;
-                popup.Position = new PixelPoint(500, 200);
-            }
-
             popup.Show();
         }
 
