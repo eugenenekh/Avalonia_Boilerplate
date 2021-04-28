@@ -1,4 +1,5 @@
 using System;
+using Avalonia.Controls.ApplicationLifetimes;
 using Microsoft.Win32;
 
 namespace Avalonia.Boilerplate {
@@ -16,14 +17,14 @@ namespace Avalonia.Boilerplate {
                 Console.WriteLine(e);
             }
 
-            var appBuilder = BuildAvaloniaApp();
-            appBuilder.StartWithClassicDesktopLifetime(args);
+            BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.
         public static AppBuilder BuildAvaloniaApp()
             => AppBuilder.Configure<App>()
                 .UsePlatformDetect()
+                .With(new ClassicDesktopStyleApplicationLifetimeOptions() { ProcessUrlActivationCommandLine = true })
                 .LogToTrace();
 
         private static void AddToRegistry() {
@@ -48,7 +49,7 @@ namespace Avalonia.Boilerplate {
             key = key.OpenSubKey("command", true);
 
             var exeDir = AppDomain.CurrentDomain.BaseDirectory + "Avalonia.Boilerplate.exe";
-            key?.SetValue("", exeDir + " %1");
+            key?.SetValue("", $"\"{exeDir}\" \"%1\"");
 #pragma warning restore CA1416 // Validate platform compatibility
         }
     }

@@ -7,7 +7,10 @@ namespace Avalonia.Boilerplate {
 
         public App() {
             UrlsOpened += (object sender, UrlOpenedEventArgs e) => {
-                System.Diagnostics.Debugger.Launch();
+                //System.Diagnostics.Debugger.Launch();
+                var window = new MainWindow();
+                window.Title = string.Join(",", e.Urls);
+                window.Show();
             };
         }
 
