@@ -15,17 +15,9 @@ namespace Avalonia.Boilerplate {
             } catch(Exception e) {
                 Console.WriteLine(e);
             }
-            
-            BuildAvaloniaApp()
-            .StartWithClassicDesktopLifetime(args);
 
-            Application.Current.UrlsOpened += (object sender, UrlOpenedEventArgs e) => {
-                System.Diagnostics.Debugger.Launch();
-            };
-        }
-
-        private void UrlsOpened(object sender, UrlOpenedEventArgs e) {
-            System.Diagnostics.Debugger.Launch();
+            var appBuilder = BuildAvaloniaApp();
+            appBuilder.StartWithClassicDesktopLifetime(args);
         }
 
         // Avalonia configuration, don't remove; also used by visual designer.
@@ -56,7 +48,7 @@ namespace Avalonia.Boilerplate {
             key = key.OpenSubKey("command", true);
 
             var exeDir = AppDomain.CurrentDomain.BaseDirectory + "Avalonia.Boilerplate.exe";
-            key?.SetValue("", exeDir);
+            key?.SetValue("", exeDir + " %1");
 #pragma warning restore CA1416 // Validate platform compatibility
         }
     }
