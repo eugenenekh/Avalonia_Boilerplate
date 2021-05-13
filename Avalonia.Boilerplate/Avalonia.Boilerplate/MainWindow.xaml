@@ -8,26 +8,8 @@
 		ExtendClientAreaChromeHints="PreferSystemChrome"
         ExtendClientAreaToDecorationsHint="True"
 		Padding="1">
-    <NativeMenu.Menu>
-		<NativeMenu>
-			<NativeMenuItem Header="File">
-				<NativeMenuItem.Menu>
-					<NativeMenu>
-						<NativeMenuItem Header="Open Dialog" Clicked="OnOpenDialogNativeMenuItemClick" />
-					</NativeMenu>
-				</NativeMenuItem.Menu>
-			</NativeMenuItem>
-		</NativeMenu>
-	</NativeMenu.Menu>
-
 	<DockPanel>
-		<Menu Name="mainMenu" DockPanel.Dock="Top">
-			<MenuItem Header="_File">
-				<MenuItem Header="_Open Dialog" Click="OnOpenDialogMenuItemClick" />
-			</MenuItem>
-		</Menu>
-
-        <Button Name="btn" Click="OnOpenDialogMenuItemClick">Click me!</Button>
+        <Button Name="showDialog" Click="OnShowDialogClick">Click me! New dialog will appear in 2 seconds!</Button>
 
         <TabControl Name="tabControl">
 			<Label>Welcome to Avalonia!</Label>

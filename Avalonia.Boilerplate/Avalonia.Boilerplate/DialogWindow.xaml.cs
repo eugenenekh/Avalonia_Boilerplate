@@ -29,9 +29,8 @@ namespace Avalonia.Boilerplate {
         private void Sleep()
         {
             var now = DateTime.Now;
-            var delay = now.AddSeconds(5);
-            while (DateTime.Now.CompareTo(delay) < 0)
-            {
+            var delay = now.AddSeconds(2);
+            while (DateTime.Now.CompareTo(delay) < 0) {
                 continue;
             }
         }
