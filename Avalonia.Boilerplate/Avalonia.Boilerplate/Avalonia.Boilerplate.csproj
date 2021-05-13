@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
@@ -21,9 +21,9 @@
     </AvaloniaXaml>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0013227-beta" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0013227-beta" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0013227-beta" />
+    <PackageReference Include="Avalonia" Version="0.10.2" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.2" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.2" />
    </ItemGroup>
   <ItemGroup>
     <Compile Update="App.xaml.cs">

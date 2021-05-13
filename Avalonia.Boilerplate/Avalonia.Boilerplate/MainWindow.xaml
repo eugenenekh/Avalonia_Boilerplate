@@ -8,7 +8,7 @@
 		ExtendClientAreaChromeHints="PreferSystemChrome"
         ExtendClientAreaToDecorationsHint="True"
 		Padding="1">
-	<NativeMenu.Menu>
+    <NativeMenu.Menu>
 		<NativeMenu>
 			<NativeMenuItem Header="File">
 				<NativeMenuItem.Menu>
@@ -27,7 +27,9 @@
 			</MenuItem>
 		</Menu>
 
-		<TabControl Name="tabControl">
+        <Button Name="btn" Click="OnOpenDialogMenuItemClick">Click me!</Button>
+
+        <TabControl Name="tabControl">
 			<Label>Welcome to Avalonia!</Label>
 		</TabControl>
 	</DockPanel>

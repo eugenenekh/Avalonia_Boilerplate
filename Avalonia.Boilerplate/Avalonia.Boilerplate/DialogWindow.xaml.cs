@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
+using Avalonia.Threading;
 
 namespace Avalonia.Boilerplate {
     public class DialogWindow : Window {
@@ -9,7 +11,8 @@ namespace Avalonia.Boilerplate {
         }
 
         public Task<bool> ShowModalWindow(Window owner) {
-            return ShowDialog<bool>(owner);
+            Sleep();
+            return Dispatcher.UIThread.InvokeAsync(() => ShowDialog<bool>(owner));
         }
 
         private void InitializeComponent() {
@@ -21,6 +24,16 @@ namespace Avalonia.Boilerplate {
             };
             SizeToContent = SizeToContent.WidthAndHeight;
             Padding = new Thickness(Padding.Left, WindowDecorationMargin.Top, Padding.Right, Padding.Bottom);
+        }
+
+        private void Sleep()
+        {
+            var now = DateTime.Now;
+            var delay = now.AddSeconds(5);
+            while (DateTime.Now.CompareTo(delay) < 0)
+            {
+                continue;
+            }
         }
     }
 }
