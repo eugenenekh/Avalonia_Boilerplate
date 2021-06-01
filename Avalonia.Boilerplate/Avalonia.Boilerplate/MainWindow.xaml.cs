@@ -1,3 +1,4 @@
+using System.Reactive.Linq;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -11,13 +12,8 @@ namespace Avalonia.Boilerplate {
 #endif
         }
 
-        private void InitializeComponent() {
+        private void InitializeComponent() {            
             AvaloniaXamlLoader.Load(this);
-            ExtendClientAreaTitleBarHeightHint = WindowDecorationMargin.Top;
-        }
-
-        private void OnShowDialogClick(object sender, RoutedEventArgs e) {
-            new DialogWindow().ShowModalWindow(this);
         }
     }
 }
