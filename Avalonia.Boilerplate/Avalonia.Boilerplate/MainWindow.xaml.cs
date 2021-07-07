@@ -6,6 +6,7 @@ using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
+using Avalonia.Platform;
 
 namespace Avalonia.Boilerplate {
     public class MainWindow : Window {
@@ -24,6 +25,7 @@ namespace Avalonia.Boilerplate {
 
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
+
         }
 
         private void OnOpenDialogNativeMenuItemClick(object sender, EventArgs e) {
