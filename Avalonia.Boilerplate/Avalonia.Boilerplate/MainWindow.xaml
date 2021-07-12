@@ -1,9 +1,32 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Avalonia.Boilerplate.MainWindow"
-        Title="Avalonia.Boilerplate">
-    Welcome to Avalonia!
-</Window>
+<local:BaseWindow xmlns="https://github.com/avaloniaui"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:local="clr-namespace:Avalonia.Boilerplate"
+                  x:Class="Avalonia.Boilerplate.MainWindow"
+                  MinWidth="500"
+                  MinHeight="300"
+                  Title="Avalonia.Boilerplate">
+	<NativeMenu.Menu>
+		<NativeMenu>
+			<NativeMenuItem Header="File">
+				<NativeMenuItem.Menu>
+					<NativeMenu>
+						<NativeMenuItem Header="Open Dialog" Clicked="OnOpenDialogNativeMenuItemClick" />						
+					</NativeMenu>
+				</NativeMenuItem.Menu>
+			</NativeMenuItem>
+		</NativeMenu>
+	</NativeMenu.Menu>
+
+	<DockPanel>
+		<Menu Name="mainMenu" DockPanel.Dock="Top">
+			<MenuItem Header="_File">
+				<MenuItem Header="_Open Dialog" Click="OnOpenDialogMenuItemClick" />
+			</MenuItem>
+		</Menu>
+
+		<TabControl Name="tabControl">
+			<Label>Welcome to Avalonia!</Label>
+		</TabControl>
+	</DockPanel>
+
+</local:BaseWindow>
