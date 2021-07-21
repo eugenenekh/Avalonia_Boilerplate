@@ -1,6 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Chrome;
+using Avalonia.Controls.Primitives;
 using Avalonia.Markup.Xaml;
+using Avalonia.VisualTree;
 
 namespace Avalonia.Boilerplate {
     public class MainWindow : Window {
@@ -10,11 +13,16 @@ namespace Avalonia.Boilerplate {
             this.AttachDevTools();
 #endif
 
-            Padding = new Thickness(1,22,1,1);
+            OpenChild();
         }
 
         private void InitializeComponent() {
             AvaloniaXamlLoader.Load(this);
+        }
+
+        public void OpenChild() {
+            var child = new ChildWindow();
+            child.Show();
         }
     }
 }

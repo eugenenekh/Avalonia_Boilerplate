@@ -12,6 +12,9 @@
     <AvaloniaXaml Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaXaml>
+    <AvaloniaXaml Include="ChildWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </AvaloniaXaml>
     <AvaloniaXaml Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaXaml>

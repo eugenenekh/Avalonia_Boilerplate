@@ -15,5 +15,6 @@ namespace Avalonia.Boilerplate {
 
             base.OnFrameworkInitializationCompleted();
         }
+
     }
 }

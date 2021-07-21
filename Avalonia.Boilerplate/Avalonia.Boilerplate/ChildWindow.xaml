@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:boilerplate="clr-namespace:Avalonia.Boilerplate"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Avalonia.Boilerplate.ChildWindow"
+        Title="Avalonia.Boilerplate"
+        SystemDecorations="BorderOnly"
+        TransparencyBackgroundFallback="Transparent"
+        TransparencyLevelHint="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaChromeHints="NoChrome">
+
+    <Window.Styles>
+        <Style Selector="CaptionButtons">
+            <Setter Property="IsVisible" Value="False" />
+        </Style>
+        <Style Selector="TitleBar /template/ Border TextBlock#PART_TitleHolder">
+            <Setter Property="HorizontalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="80 4 80 0" />
+        </Style>
+    </Window.Styles>
+
+    <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel>
+            <TextBlock>Guided Tour Dialog</TextBlock>
+        </StackPanel>
+    </Panel>
+
+</Window>
