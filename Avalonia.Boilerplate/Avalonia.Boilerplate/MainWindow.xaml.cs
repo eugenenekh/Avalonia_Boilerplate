@@ -9,6 +9,8 @@ namespace Avalonia.Boilerplate {
 #if DEBUG
             this.AttachDevTools();
 #endif
+
+            Padding = new Thickness(1,22,1,1);
         }
 
         private void InitializeComponent() {

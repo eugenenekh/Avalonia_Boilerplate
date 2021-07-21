@@ -4,6 +4,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia.Boilerplate.MainWindow"
-        Title="Avalonia.Boilerplate">
-    Welcome to Avalonia!
+        Title="Avalonia.Boilerplate"
+        SystemDecorations="BorderOnly"
+        TransparencyBackgroundFallback="Transparent"
+        TransparencyLevelHint="Transparent"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ExtendClientAreaChromeHints="NoChrome"
+        >
+
+    <Window.Styles>
+        <Style Selector="CaptionButtons">
+            <Setter Property="IsVisible" Value="False"/>
+        </Style>
+        <Style Selector="TitleBar /template/ Border TextBlock#PART_TitleHolder">
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Margin" Value="80 4 80 0"/>
+        </Style>
+    </Window.Styles>
+
+    <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock>Guided Tour Dialog</TextBlock>
+    </Panel>
 </Window>
