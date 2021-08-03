@@ -6,4 +6,14 @@
         x:Class="Avalonia.Boilerplate.MainWindow"
         Title="Avalonia.Boilerplate">
 
+    <UserControl>
+
+        <Panel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Decorator x:Name="browserWrapper" />
+            <StackPanel>
+                <TextBlock>Parent View :: Aggregator</TextBlock>
+            </StackPanel>
+        </Panel>
+    </UserControl>
+
 </Window>

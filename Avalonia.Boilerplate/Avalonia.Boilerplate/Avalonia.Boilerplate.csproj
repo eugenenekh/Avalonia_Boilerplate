@@ -20,9 +20,10 @@
     </AvaloniaXaml>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.0" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.0" />
+    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0015107-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0015107-beta" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0015107-beta" />
+    <PackageReference Include="WebViewControl-Avalonia" Version="2.91.5" />
    </ItemGroup>
   <ItemGroup>
     <Compile Update="App.xaml.cs">
@@ -31,5 +32,19 @@
     <Compile Update="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Xilium.CefGlue, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\cefglue\CefGlue.Avalonia\bin\Debug\netstandard2.0\Xilium.CefGlue.dll</HintPath>
+    </Reference>
+    <Reference Include="Xilium.CefGlue.Avalonia, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\cefglue\CefGlue.Avalonia\bin\Debug\netstandard2.0\Xilium.CefGlue.Avalonia.dll</HintPath>
+    </Reference>
+    <Reference Include="Xilium.CefGlue.Common, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\cefglue\CefGlue.Avalonia\bin\Debug\netstandard2.0\Xilium.CefGlue.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Xilium.CefGlue.Common.Shared, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\cefglue\CefGlue.Avalonia\bin\Debug\netstandard2.0\Xilium.CefGlue.Common.Shared.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>
