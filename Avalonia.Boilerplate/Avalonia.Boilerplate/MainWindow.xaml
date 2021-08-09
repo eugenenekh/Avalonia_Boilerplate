@@ -9,7 +9,7 @@
         ExtendClientAreaToDecorationsHint="True"
 		Padding="1">
 	<DockPanel>
-        <Button Name="showDialog" Click="OnShowDialogClick">Click me! New dialog will appear in 2 seconds!</Button>
+        <Button Name="showDialog" Click="OnShowDialogClick">Click me! New dialog will appear!</Button>
 
         <TabControl Name="tabControl">
 			<Label>Welcome to Avalonia!</Label>

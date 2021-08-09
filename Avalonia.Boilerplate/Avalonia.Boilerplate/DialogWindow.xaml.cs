@@ -11,7 +11,6 @@ namespace Avalonia.Boilerplate {
         }
 
         public Task<bool> ShowModalWindow(Window owner) {
-            Sleep();
             return Dispatcher.UIThread.InvokeAsync(() => ShowDialog<bool>(owner));
         }
 
@@ -24,15 +23,6 @@ namespace Avalonia.Boilerplate {
             };
             SizeToContent = SizeToContent.WidthAndHeight;
             Padding = new Thickness(Padding.Left, WindowDecorationMargin.Top, Padding.Right, Padding.Bottom);
-        }
-
-        private void Sleep()
-        {
-            var now = DateTime.Now;
-            var delay = now.AddSeconds(2);
-            while (DateTime.Now.CompareTo(delay) < 0) {
-                continue;
-            }
         }
     }
 }
