@@ -6,14 +6,10 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="App.xaml" />
-    <None Remove="DialogWindow.xaml" />
     <None Remove="MainWindow.xaml" />
   </ItemGroup>
   <ItemGroup>
     <AvaloniaXaml Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </AvaloniaXaml>
-    <AvaloniaXaml Include="DialogWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
     </AvaloniaXaml>
     <AvaloniaXaml Include="MainWindow.xaml">

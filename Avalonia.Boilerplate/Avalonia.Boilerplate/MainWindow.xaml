@@ -9,7 +9,8 @@
         ExtendClientAreaToDecorationsHint="True"
 		Padding="1">
 	<DockPanel>
-        <Button Name="showDialog" Click="OnShowDialogClick">Click me! New dialog will appear!</Button>
+        <Button Name="showCustomTooltip">Hover me to see custom tooltip window!</Button>
+        <Button Name="showAnotherCustomTooltip">Hover me to see another custom tooltip window!</Button>
 
         <TabControl Name="tabControl">
 			<Label>Welcome to Avalonia!</Label>
