@@ -7,14 +7,29 @@
         Title="Avalonia.Boilerplate"
 		ExtendClientAreaChromeHints="PreferSystemChrome"
         ExtendClientAreaToDecorationsHint="True"
-		Padding="1">
+		Padding="1"
+        WindowState="Maximized">
 	<DockPanel>
-        <Button Name="showCustomTooltip">Hover me to see custom tooltip window!</Button>
-        <Button Name="showAnotherCustomTooltip">Hover me to see another custom tooltip window!</Button>
-
         <TabControl Name="tabControl">
 			<Label>Welcome to Avalonia!</Label>
 		</TabControl>
+        <!-- <Button Name="showCustomTooltip">Hover me to see custom tooltip window!</Button> -->
+        <Grid RowDefinitions="30,30,30,30" ColumnDefinitions="100,100,100,100">
+            <Button Grid.Row="0" Grid.Column="0" Name="showCustomTooltip">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="0" Grid.Column="1" Name="showCustomTooltip0">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="0" Grid.Column="2" Name="showCustomTooltip1">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="0" Grid.Column="3" Name="showCustomTooltip2">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="1" Grid.Column="0" Name="showCustomTooltip3">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="1" Grid.Column="1" Name="showCustomTooltip4">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="1" Grid.Column="2" Name="showCustomTooltip5">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="1" Grid.Column="3" Name="showCustomTooltip6">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="2" Grid.Column="0" Name="showCustomTooltip7">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="2" Grid.Column="1" Name="showCustomTooltip8">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="2" Grid.Column="2" Name="showCustomTooltip9">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="2" Grid.Column="3" Name="showCustomTooltip10">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="3" Grid.Column="0" Name="showCustomTooltip11">Hover me to see custom tooltip window!</Button>
+            <Button Grid.Row="3" Grid.Column="1" Name="showCustomTooltip12">Hover me to see custom tooltip window!</Button>
+        </Grid>
 	</DockPanel>
 	
 </Window>

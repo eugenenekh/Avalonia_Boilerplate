@@ -1,7 +1,7 @@
 using Avalonia.Controls;
-using Avalonia.Controls.Presenters;
 using Avalonia.Input;
 using Avalonia.Markup.Xaml;
+using System.Threading.Tasks;
 
 namespace Avalonia.Boilerplate {
     public class MainWindow : Window {
@@ -10,19 +10,35 @@ namespace Avalonia.Boilerplate {
             InitializeComponent();
 #if DEBUG
             this.AttachDevTools();
-#endif
+#endif  
             this.FindControl<Button>("showCustomTooltip").PointerEnter += OnPointerEnter;
             this.FindControl<Button>("showCustomTooltip").PointerLeave += OnPointerLeave;
-            this.FindControl<Button>("showAnotherCustomTooltip").PointerEnter += OnPointerEnter1;
-            this.FindControl<Button>("showAnotherCustomTooltip").PointerLeave += OnPointerLeave1;
-        }
-
-        public static void WindowStatePropertyChanged(AvaloniaPropertyChangedEventArgs<WindowState> args)
-        {
-            if (args.OldValue.GetValueOrDefault<WindowState>() == WindowState.Minimized)
-            {
-                ((Window)args.Sender).Renderer.Start();
-            }
+            this.FindControl<Button>("showCustomTooltip0").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip0").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip1").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip1").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip2").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip2").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip3").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip3").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip4").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip4").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip5").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip5").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip6").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip6").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip7").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip7").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip8").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip8").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip9").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip9").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip10").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip10").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip11").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip1").PointerLeave += OnPointerLeave;
+            this.FindControl<Button>("showCustomTooltip12").PointerEnter += OnPointerEnter;
+            this.FindControl<Button>("showCustomTooltip12").PointerLeave += OnPointerLeave;
         }
 
         private void InitializeComponent() {
@@ -30,30 +46,14 @@ namespace Avalonia.Boilerplate {
             ExtendClientAreaTitleBarHeightHint = WindowDecorationMargin.Top;
         }
 
-        private readonly CustomToolTip tooltip = new CustomToolTip(new TextPresenter() {
-                Height = 200,
-                Width = 200
-            });
-
-        private readonly CustomToolTip tooltip1 = new CustomToolTip(new TextPresenter() {
-                Height = 300,
-                Width = 300
-            });
-
-        private void OnPointerEnter(object sender, PointerEventArgs args) {
-            tooltip.Show(this);
+        private async void OnPointerEnter(object sender, PointerEventArgs args) {
+            // this delay is to simulate view loading
+            await Task.Delay(250);
+            TooltipService.Show(this);
         }
 
         private void OnPointerLeave(object sender, PointerEventArgs args) {
-            tooltip.Hide();
-        }
-
-        private void OnPointerEnter1(object sender, PointerEventArgs args) {
-            tooltip1.Show(this);
-        }
-
-        private void OnPointerLeave1(object sender, PointerEventArgs args) {
-            tooltip1.Hide();
+            TooltipService.Hide();
         }
     }
 }
