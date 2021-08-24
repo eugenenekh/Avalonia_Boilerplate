@@ -2,29 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:webview="clr-namespace:WebViewControl;assembly=WebViewControl.Avalonia"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia.Boilerplate.MainWindow"
-        Title="Avalonia.Boilerplate">
-    <!-- <DockPanel>
-        <Button Name="OpenWindow" Click="OnOpenWindowClick">Click me to open new window!</Button>
-        <Button Name="CloseWindow" Click="OnCloseWindowClick">Click me to close opened window!</Button>
-        <Label>Welcome to Avalonia!</Label>
-    </DockPanel> -->
-    <Border Background="LightBlue"
-        BorderThickness="10"
-        BorderBrush="Black"
-        Margin="50">
-        <StackPanel Background="White"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Top">
-            <TextBlock Margin="5,0"
-                        FontSize="18"
-                        HorizontalAlignment="Center">
-                Alignment, Margin and Padding Sample
-            </TextBlock>
-            <Button HorizontalAlignment="Left" Margin="20">Button 1</Button>
-            <Button HorizontalAlignment="Right" Margin="10">Button 2</Button>
-            <Button HorizontalAlignment="Stretch">Button 3</Button>
-        </StackPanel>
-    </Border>
+        Title="Avalonia.Boilerplate"
+        Padding="1">
+    <DockPanel>
+        <webview:WebView x:Name="webview" Address="https://google.com" />
+    </DockPanel>
 </Window>
