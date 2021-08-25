@@ -17,10 +17,10 @@
     </AvaloniaXaml>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.10.7" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.10.7" />
-    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.7" />
-    <PackageReference Include="WebViewControl-Avalonia" Version="2.91.7" />
+    <PackageReference Include="Avalonia" Version="0.10.999-cibuild0015107-beta" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.10.999-cibuild0015107-beta" />
+    <PackageReference Include="Avalonia.Diagnostics" Version="0.10.999-cibuild0015107-beta" />
+    <PackageReference Include="WebViewControl-Avalonia" Version="2.91.5" />
    </ItemGroup>
   <ItemGroup>
     <Compile Update="App.xaml.cs">

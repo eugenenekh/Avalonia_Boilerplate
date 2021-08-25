@@ -6,8 +6,7 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia.Boilerplate.MainWindow"
         Title="Avalonia.Boilerplate"
+        ExtendClientAreaChromeHints="PreferSystemChrome"
+        ExtendClientAreaToDecorationsHint="True"
         Padding="1">
-    <DockPanel>
-        <webview:WebView x:Name="webview" Address="https://google.com" />
-    </DockPanel>
 </Window>
